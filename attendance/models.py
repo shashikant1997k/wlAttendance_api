@@ -4,7 +4,7 @@ from employee.models import Employee
 
 class Attendance(models.Model):
     empID = models.ForeignKey(
-        Employee, on_delete=models.CASCADE, to_field='empID', db_constraint=False)
+        Employee, on_delete=models.SET_NULL, to_field='empID', db_constraint=False, null=True)
     daydate = models.DateField(auto_now_add=True)
     # daydate = models.DateField()
     timing_in = models.CharField(max_length=12, default="")

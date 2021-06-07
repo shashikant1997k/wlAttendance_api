@@ -136,7 +136,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.AllowAny',
-    ]
+    ],
+    'EXCEPTION_HANDLER': 'rest_framework.views.exception_handler'
 }
 
 
@@ -150,9 +151,9 @@ CORS_ALLOWED_ORIGINS = [
 
 STATIC_URL = '/static/'
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-AWS_ACCESS_KEY_ID = 'AKIAV6WTIB45EZ33237T'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'shashikant1997k'
-AWS_QUERYSTRING_AUTH = False
+# DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# AWS_ACCESS_KEY_ID = 'AKIAV6WTIB45EZ33237T'
+# AWS_SECRET_ACCESS_KEY = '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'
+# AWS_STORAGE_BUCKET_NAME = 'shashikant1997k'
+# AWS_QUERYSTRING_AUTH = False

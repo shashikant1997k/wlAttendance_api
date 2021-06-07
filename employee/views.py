@@ -4,6 +4,9 @@ from rest_framework import generics
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Employee
 from .serializers import EmployeeRegisterSerializer
+from django.db import IntegrityError
+from rest_framework.response import Response
+from rest_framework import status
 
 
 class EmployeeList(mixins.ListModelMixin,
@@ -36,7 +39,12 @@ class EmployeeDetails(mixins.RetrieveModelMixin,
         return self.retrieve(request, id=id)
 
     def put(self, request, id):
-        return self.update(request, id=id)
+        try:
+            return super(mixins.UpdateModelMixin, self).update(request, id=id)
+            # return self.update(request, id=id)
+        except IntegrityError:
+            content = {'error': 'IntegrityError'}
+            return Response(content, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, id):
         return self.destroy(request, id=id)
